@@ -174,9 +174,9 @@ export interface GetManyReferenceResult<RecordType = Record> {
     validUntil?: ValidUntil;
 }
 
-export interface UpdateParams {
+export interface UpdateParams<T = any> {
     id: Identifier;
-    data: any;
+    data: T;
     previousData: Record;
 }
 export interface UpdateResult<RecordType = Record> {
@@ -184,17 +184,17 @@ export interface UpdateResult<RecordType = Record> {
     validUntil?: ValidUntil;
 }
 
-export interface UpdateManyParams {
+export interface UpdateManyParams<T = any> {
     ids: Identifier[];
-    data: any;
+    data: T;
 }
 export interface UpdateManyResult {
     data?: Identifier[];
     validUntil?: ValidUntil;
 }
 
-export interface CreateParams {
-    data: any;
+export interface CreateParams<T = any> {
+    data: T;
 }
 export interface CreateResult<RecordType = Record> {
     data: RecordType;
