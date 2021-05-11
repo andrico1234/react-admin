@@ -260,7 +260,18 @@ export default {
             average_note: 4,
             commentable: true,
             published_at: new Date('2012-12-01'),
-            tags: [3, 5],
+            nestedData: [
+                {
+                    id: '1',
+                    tag: 5,
+                    name: 'hey there',
+                },
+                {
+                    id: '2',
+                    tag: 3,
+                    name: 'helloo',
+                },
+            ],
             category: 'lifestyle',
             backlinks: [],
             notifications: [],
