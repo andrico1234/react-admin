@@ -6,8 +6,6 @@ import {
     ArrayInput,
     SimpleFormIterator,
     TextInput,
-    required,
-    useInput,
 } from 'react-admin'; // eslint-disable-line import/no-unresolved
 
 function validate(values: any) {
@@ -32,39 +30,34 @@ function validate(values: any) {
         });
     }
 
-    console.log(errors);
+    console.log('in global validator');
 
     return errors;
+}
+
+function customValidator(val: string) {
+    console.log('in input validator');
+    if (!val) return 'is required';
 }
 
 const PostEdit = ({ permissions, ...props }) => (
     <Edit {...props}>
         <TabbedForm validate={validate}>
             <FormTab label="post.form.miscellaneous">
-                <ArrayInput source="nestedData" label="Tags">
+                <ArrayInput source="nestedData" label="data">
                     <SimpleFormIterator>
-                        <TextInput source="id" label="ID" />
                         <TextInput source="name" label="Name" />
-                        <OtherInput source="tag" />
+
+                        <TextInput
+                            source="tag"
+                            label="tag"
+                            validate={customValidator}
+                        />
                     </SimpleFormIterator>
                 </ArrayInput>
             </FormTab>
         </TabbedForm>
     </Edit>
 );
-
-function OtherInput(props) {
-    const { input } = useInput(props);
-    const { onBlur, onFocus, ...rest } = input;
-
-    return (
-        <TextInput
-            source={props.source}
-            label="tag"
-            validate={required('is required')}
-            {...rest}
-        />
-    );
-}
 
 export default PostEdit;
