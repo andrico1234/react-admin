@@ -17,6 +17,10 @@ describe('Create Page', () => {
 
     it('should show the correct title in the appBar', () => {
         cy.get(CreatePage.elements.title).contains('Create Post');
+
+        it('should show the correct title in the window title', () => {
+            cy.title().should('eq', 'Create Post');
+        });
     });
 
     it('should put the current date in the field by default', () => {

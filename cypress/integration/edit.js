@@ -13,11 +13,12 @@ describe('Edit Page', () => {
     const CreateUserPage = createPageFactory('/#/users/create');
 
     describe('Title', () => {
-        it('should show the correct title in the appBar', () => {
+        it('should show the correct title in the document and appBar ', () => {
             EditPostPage.navigate();
             cy.get(EditPostPage.elements.title).contains(
                 'Post "Sed quo et et fugiat modi"'
             );
+            cy.title().should('eq', 'Post "Sed quo et et fugiat modi"');
         });
     });
 

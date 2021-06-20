@@ -11,8 +11,9 @@ describe('List Page', () => {
     });
 
     describe('Title', () => {
-        it('should show the correct title in the appBar', () => {
+        it('should show the correct title in the document and  appBar', () => {
             cy.get(ListPagePosts.elements.title).contains('Posts');
+            cy.title().should('eq', 'Posts');
         });
     });
 
